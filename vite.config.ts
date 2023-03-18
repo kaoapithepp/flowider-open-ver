@@ -53,8 +53,8 @@ export default defineConfig({
       ],
 
       manifest: {
-        name: 'Flowy-Back-Office',
-        short_name: 'Flowy-Back-Office',
+        name: 'Flowider Service | Flowy',
+        short_name: 'Flowider',
         scope: '/',
         start_url: '/',
         theme_color: "#FFFEFF",
@@ -76,7 +76,7 @@ export default defineConfig({
             src: './logos/flowy-red-on-white.png',
             sizes: '512x512',
             type: 'image/png',
-            
+            purpose: 'any maskable'
           },
           {
             src: './logos/flowy-red-on-white.svg',
