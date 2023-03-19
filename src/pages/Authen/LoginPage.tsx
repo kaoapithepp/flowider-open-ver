@@ -9,6 +9,7 @@ import { InputField } from '../../components/input/InputField';
 
 // Components
 import LoadingScreen from '../../components/loading/LoadingScreen';
+import { isThereToken } from '../../utils/isThereToken';
 
 interface UserLoginEntityContext {
     email: string;
@@ -33,23 +34,30 @@ const LoginPage: React.FC = () => {
 
     async function handleLoginClick(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
+        try {
+            setIsLoading(true);
+            axios.post(`${import.meta.env.VITE_FLOWY_API_ROUTE}/flowider/login`, {
+                email: loginEntity.email,
+                password: loginEntity.password
+            }, {
+                headers : {
+                    "Content-type" : "application/json"
+                }
+            })
+            .then(({ data }) => {
+                localStorage.setItem("flowyFlowider", JSON.stringify(data.token));
+                window.location.reload();
+                // if(isThereToken){
+                //     setIsLoading(false);
+                //     navigate("/dashboard", { replace: true });
+                // }
+            }, (unres) => {
+                alert(unres.response.data);
+            })
 
-        axios.post(`${import.meta.env.VITE_FLOWY_API_ROUTE}/flowider/login`, {
-            email: loginEntity.email,
-            password: loginEntity.password
-        }, {
-            headers : {
-                "Content-type" : "application/json"
-            }
-        })
-        .then(({ data }) => {
-            localStorage.setItem("flowyFlowider", JSON.stringify(data.token));
-            setIsLoading(false);
-            navigate("/dashboard", { replace: true });
-        }, (unres) => {
-            setIsLoading(false);
-            alert(unres.response.data);
-        });
+        } catch (err: any) {
+            alert(err.message);
+        }
     }
 
     return( 

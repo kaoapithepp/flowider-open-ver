@@ -16,8 +16,7 @@ const DashboardPage: React.FC = () => {
     const [allBelongPlace, setAllBelongPlace] = useState<any>([]);
  
     useEffect(() => {
-        setIsLoading(true);
-        if(isThereToken){
+        // if(isThereToken){
             axios.get(`${import.meta.env.VITE_FLOWY_API_ROUTE}/place`, {
                 headers: {
                     Authorization: `Bearer ${isThereToken}`
@@ -25,19 +24,16 @@ const DashboardPage: React.FC = () => {
             })
             .then(res => {
                 setAllBelongPlace(res.data);
-
-                if(allBelongPlace.length > 0) {
-                    allBelongPlace.map((elem: any, key: number) => {
-                        cacheImages(elem.image);
-                    })
-                }
-
+                
+                allBelongPlace.map((elem: any, key: number) => {
+                    cacheImages(elem.image);
+                })
+                    
                 setIsLoading(false);
-
             }, (unres) => {
                 alert(unres.response.data);
             });
-        }
+        // }
     },[]);
 
     return (

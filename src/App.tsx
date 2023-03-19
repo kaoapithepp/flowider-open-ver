@@ -29,7 +29,7 @@ import DeskInitPage from './pages/Management/02_Create/DeskInitPage';
 import SuccessPage from './pages/Management/02_Create/SuccessPage';
 import EachDeskPage from './pages/Desk/EachDeskPage';
 
-export const IS_PRODUCTION_MODE = false;
+export const IS_PRODUCTION_MODE = true;
 
 function App() {
 

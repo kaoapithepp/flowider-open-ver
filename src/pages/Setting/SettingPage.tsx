@@ -85,7 +85,9 @@ const SettingPage: React.FC = () => {
                                 <p>{profileInfo.bnk_name ? profileInfo.bnk_name : "ไม่ระบุธนาคาร"}</p>
                             </div>
                         </Section>
-                        <BorderedButton onClick={handleSignOut}>ออกจากระบบ</BorderedButton>
+                        <MarginBottom>
+                            <BorderedButton onClick={handleSignOut}>ออกจากระบบ</BorderedButton>
+                        </MarginBottom>
                     </Container>
                     {
                         isEditProfileOpen ?
@@ -144,7 +146,7 @@ const Header = styled.div`
 
 const Section = styled.div`
     margin-top: 3em;
-
+    
     .info-section {
         padding: 1em 0;
         border-bottom: 1px solid var(--grey-400);
@@ -152,6 +154,10 @@ const Section = styled.div`
             color: var(--grey-800);
         }
     }
+`;
+
+const MarginBottom = styled.div`
+    margin-bottom: 3em;
 `;
 
 export default SettingPage;
