@@ -51,7 +51,7 @@ const EachPlacePage: React.FC = () => {
                 alert(err.message);
             }
         }
-    },[placeInfo]);
+    },[]);
 
     async function handleUpdatePlaceInfo(event: any){
         event.preventDefault();
